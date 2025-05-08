@@ -1,0 +1,161 @@
+/* Alapstílusok */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* A box-sizing beállítása a teljes magasság és szélesség figyelembevételéhez */
+  font-family: Montserrat;
+  font-weight: bold; /* Alapértelmezett betűtípus */
+  background-image: url('/images/darkbackground.svg'); /* Háttérkép beállítása */
+  background-size: cover; /* Háttérkép méretezése */
+  background-position: center; /* Háttérkép középre igazítása */
+  background-repeat: no-repeat; /* Háttérkép ismétlésének letiltása */
+  background-attachment: fixed; /* Háttérkép rögzítése görgetéskor */
+  color: #d8f3e1; /* Alapértelmezett szövegszín */
+  text-align: center; /* Szöveg középre igazítása */
+  text-decoration: none; /* Szöveg aláhúzásának eltávolítása */
+  transition: background-color 0.3s ease; /* Háttérszín átmenet */
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: auto; /* Engedélyezi a görgetést */
+  box-sizing: border-box; /* A box-sizing beállítása a teljes magasság és szélesség figyelembevételéhez */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  display: flex;
+  flex-direction: column; /* Gyermekelemek egymás alatt */
+  min-height: 100vh; /* Az oldal teljes magasságát kitölti */
+}
+
+.App-header {
+  position: relative; /* A header pozíciója relatív a szülőhöz */
+  padding: 1rem; /* Belső margó */
+  margin-top: 1vh;
+  height: 10vh;
+  z-index: 1; /* A header tartalma a háttér fölött marad */
+  display: flex; /* Flexbox a tartalom elrendezéséhez */
+  align-items: flex-start; /* Tartalom igazítása a tetejéhez */
+  justify-content: center; /* Tartalom középre igazítása vízszintesen */
+  color: #d8f3e1; /* Szöveg színe */
+  text-align: center; /* Szöveg középre igazítása */
+}
+
+.App-footer {
+  height: 50vh; /* A footer magassága az oldal felét foglalja el */
+  display: flex; /* Flexbox a tartalom elrendezéséhez */
+  align-items: flex-end; /* Tartalom igazítása az alsó részhez */
+  justify-content: center; /* Tartalom középre igazítása vízszintesen */
+  color: white; /* Szöveg színe */
+  text-align: center; /* Szöveg középre igazítása */
+}
+
+.nav {
+  display: flex;
+  justify-content: flex-end; /* Jobbra igazítás */
+  align-items: center;
+  gap: 2rem;
+  padding: 0 1rem; /* Belül margó */
+  width: 100%; /* A navigációs sáv teljes szélessége */
+  box-sizing: border-box; /* A padding figyelembe vétele a szélesség számításakor */
+}
+
+.nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1rem;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #effaf3;
+  font-weight: bold; 
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.nav a:hover {
+  transform: scale(1.05); /* Hover eseményre növekedés */
+  font-size: 1.1rem;
+  color: #6ef39f;
+}
+
+/* Dropdown menü */
+.dropdown-content {
+  display: none; /* Alapértelmezés szerint rejtett */
+  position: absolute;
+  background-color: #444;
+  min-width: 150px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: white;
+  padding: 10px 15px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #575757;
+}
+
+/* Dropdown megjelenítése hover eseményre */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.App-main {
+  position: relative; /* A main tartalom relatív pozícióban marad */
+  margin-top: -10vh; /* A main tartalom feljebb tolása */
+  z-index: 0; /* A main tartalom a header háttérképe alá kerül */
+  display: flex;
+  flex-direction: column; /* Gyermekelemek egymás alatt */
+  align-items: center; /* Tartalom középre igazítása vízszintesen */
+  justify-content: flex-start; /* Tartalom igazítása a tetejéhez */
+  padding: 2rem; /* Belső margó */
+  color: #333; /* Szöveg színe */
+  text-align: center; /* Szöveg középre igazítása */
+  flex-grow: 1; /* Az App-main kitölti a fennmaradó helyet */
+}
+.app-main h1 {
+  font-size: 2rem; /* Cím mérete */
+  margin-bottom: 1rem; /* Alsó margó */
+}
+.about {
+  margin-top: 5vh; /* Felső margó */
+  display: flex;
+  flex-direction: column; /* Gyermekelemek egymás alatt */
+  align-items: center; /* Tartalom középre igazítása vízszintesen */
+  justify-content: center; /* Tartalom középre igazítása függőlegesen */
+  padding: 2rem; /* Belső margó */
+  color: #333; /* Szöveg színe */
+  text-align: center; /* Szöveg középre igazítása */
+}
+
+/* Reszponzív stílusok */
+@media (max-width: 768px) {
+  .nav {
+    flex-direction: column; /* Lista elemek egymás alá helyezése */
+    align-items: flex-start;
+    gap: 1rem; /* Kisebb térköz az elemek között */
+  }
+
+  .nav ul {
+    flex-direction: column; /* Lista elemek egymás alá helyezése */
+    gap: 0.5rem; /* Kisebb térköz az elemek között */
+  }
+
+  .dropdown-content {
+    position: static; /* Statikus pozíció kisebb képernyőn */
+    box-shadow: none; /* Árnyék eltávolítása */
+  }
+}
